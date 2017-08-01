@@ -12,16 +12,18 @@ import java.sql.*;
 public class JunkServlet extends HttpServlet {
      @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws IOException, ServletException, URISyntaxException, SQLException {
-        Connection connection = Conn.getConnection();
-        Statement stmt = connection.createStatement();
-        stmt.executeUpdate("DROP TABLE IF EXISTS ticks");
-        stmt.executeUpdate("CREATE TABLE ticks (tick timestamp)");
-        stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
-        ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
-        while (rs.next()) {
-            System.out.println("Read from DB: " + rs.getTimestamp("tick"));
-        }
+            throws IOException, ServletException {
+         try {          
+           Connection connection = Conn.getConnection();
+           Statement stmt = connection.createStatement();
+           stmt.executeUpdate("DROP TABLE IF EXISTS ticks");
+           stmt.executeUpdate("CREATE TABLE ticks (tick timestamp)");
+           stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
+           ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
+           while (rs.next()) {
+               System.out.println("Read from DB: " + rs.getTimestamp("tick"));
+           }
+         } catch (Exception e) {}
         response.getWriter().println("Junk Hello world!!");
     }
 }
