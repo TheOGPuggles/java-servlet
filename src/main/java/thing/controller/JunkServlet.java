@@ -21,7 +21,7 @@ public class JunkServlet extends HttpServlet {
            stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
            ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
            while (rs.next()) {
-               System.out.println("Read from DB: " + rs.getTimestamp("tick"));
+               response.getWriter().println("Read from DB: " + rs.getTimestamp("tick") + "<br>");
            }
          } catch (Exception e) {}
         response.getWriter().println("Junk Hello world!!");
