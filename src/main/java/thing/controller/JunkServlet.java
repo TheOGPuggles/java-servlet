@@ -14,6 +14,7 @@ public class JunkServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
         Connection connection = Conn.getConnection();
+        Statement stmt = connection.createStatement();
         stmt.executeUpdate("DROP TABLE IF EXISTS ticks");
         stmt.executeUpdate("CREATE TABLE ticks (tick timestamp)");
         stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
