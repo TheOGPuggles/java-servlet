@@ -12,7 +12,7 @@ import java.sql.*;
 public class JunkServlet extends HttpServlet {
      @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws IOException, ServletException {
+            throws IOException, ServletException, URISyntaxException, SQLException {
         Connection connection = Conn.getConnection();
         Statement stmt = connection.createStatement();
         stmt.executeUpdate("DROP TABLE IF EXISTS ticks");
