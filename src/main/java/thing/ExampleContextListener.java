@@ -1,6 +1,8 @@
 import javax.servlet.ServletContextEvent;  
 import javax.servlet.ServletContextListener;
+import avax.servlet.annotation.WebListener;
 
+@WebListener
 public class ExampleContextListener implements ServletContextListener {
 
     @Override
