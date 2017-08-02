@@ -1,6 +1,6 @@
 import javax.servlet.ServletContextEvent;  
 import javax.servlet.ServletContextListener;
-import avax.servlet.annotation.WebListener;
+import javax.servlet.annotation.WebListener;
 
 @WebListener
 public class ExampleContextListener implements ServletContextListener {
